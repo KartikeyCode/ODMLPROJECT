@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import menu from "../public/menu.png";
-import logo from "../public/SRMLogo.png";
+import menu from "../../public/menu.png";
+import logo from "../../public/SRMLogo.png";
 import { useState } from "react";
 
-export default function Navbar() {
+export default function StudentNavbar() {
   const [hide, setHide] = useState(true);
   return (
     <div className="absolute py-2 md:py-0 px-4 min-w-full justify-between flex flex-col  md:flex-row items-center md:sticky  max-h-32 lg:h-20 bg-[#FAE969] ">
@@ -46,14 +46,7 @@ export default function Navbar() {
               className="hover:scale-110 text-black text-xl font-bold font-Cinz mr-6 xl:text-2xl"
             >
               {" "}
-              Log In{" "}
-            </Link>
-            <Link
-              href="/about"
-              className="hover:scale-110 text-black text-xl font-bold font-Cinz mr-6 xl:text-2xl"
-            >
-              {" "}
-              About Us{" "}
+              Draft{" "}
             </Link>
           </>
         </div>
