@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 
-const OdCard = ({ title, status, createdOn }) => {
+const OdCard = ({ title, status, createdOn, uuid }) => {
+  //  use the uuid prop to map the od to a custom page
   let statusObj = {
     text: "placeholder",
     color: "#cccccc",
@@ -25,14 +26,21 @@ const OdCard = ({ title, status, createdOn }) => {
       color: "underReview",
     };
   }
-  console.log(statusObj);
+  // console.log(statusObj);
+  const statusColorClasses = {
+    success: "text-success",
+    reject: "text-reject",
+    underReview: "text-underReview",
+  };
 
   return (
-    <div className="md:w-[700px] md:h-[120px] rounded-[10px] border border-[#DFCE4B] md:p-5 flex flex-col justify-center">
+    <div className="md:w-[721px] md:h-[120px] rounded-[10px] border border-[#DFCE4B] md:p-5 flex flex-col justify-center">
       <h1 className="md:text-[40px] font-bold text-[#484848]">{title}</h1>
       <h2 className="text-[20px]">
         Status:{" "}
-        <span className={`text-${statusObj.color}`}>{statusObj.text}</span>
+        <span className={statusColorClasses[statusObj.color]}>
+          {statusObj.text}
+        </span>
       </h2>
     </div>
   );
