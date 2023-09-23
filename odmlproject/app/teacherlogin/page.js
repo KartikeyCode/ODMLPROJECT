@@ -1,7 +1,23 @@
+"use client"
 import img from "../../public/graphic1.jpg"
 import Image from "next/image"
 import Navbar from "@/components/navbar"
+import { useState } from "react"
 export default function TeacherLogin(){
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+      };
+
+      const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+      };
+      const handleLoginClick = () => {
+        console.log('Username:', username);
+        console.log('Password:', password);
+      };
     return(
         <div>
                <Navbar/>
@@ -14,12 +30,13 @@ export default function TeacherLogin(){
                         </h1>
                         <div className="flex flex-col form mt-8">
                           <h2 className="mb-1 text-black text-xl font-semibold"> Username:  </h2>  
-                        <input className="p-1 text-xl border-2 rounded-xl border-black "/>
+                        <input onChange={handleUsernameChange} value={username} type="text" className="p-1 text-xl border-2 rounded-xl border-black "/>
                         </div>
                         <div className="flex flex-col form mt-8">
                           <h2 className="mb-1 text-black text-xl font-semibold "> Password:  </h2>  
-                        <input className="p-1 text-xl border-2 rounded-xl border-black"/>
+                        <input onChange={handlePasswordChange} value={password} type="password" className="p-1 text-xl border-2 rounded-xl border-black"/>
                         </div>
+                        <button onClick={handleLoginClick} className="border-2 border-black rounded-full mt-5 px-4 p-2"> Log In </button>
                     </div>
 
                     <div className="md:flex flex-col hidden md:flex-row">
