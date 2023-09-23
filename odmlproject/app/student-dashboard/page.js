@@ -32,3 +32,6 @@ const page = () => {
 };
 
 export default page;
+// todo: make responsive
+// todo: add recharts, stats (the three, applied, rejected and under review)
+// todo: add recharts, stats (ods/mls)
