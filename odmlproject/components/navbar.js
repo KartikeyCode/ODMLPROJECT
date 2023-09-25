@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function Navbar() {
   const [hide, setHide] = useState(true);
   return (
-    <div className="absolute py-2 md:py-0 px-4 min-w-full justify-between flex flex-col  md:flex-row items-center md:sticky  max-h-32 lg:h-20 bg-[#FAE969] ">
+    <div className="absolute py-2 md:py-0 px-4 min-w-full justify-between flex flex-col  md:flex-row items-center md:sticky max-h-32 lg:h-20 bg-[#FAE969] ">
       <div className="flex items-center">
         <div className="flex   items-center  gap-2 ">
           <Image className=" w-12 " src={logo} />
