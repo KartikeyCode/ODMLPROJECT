@@ -1,4 +1,6 @@
 import Sidebar from "@/components/sidebar";
+import { ApplicationCount } from "@/components/student/applicationCount";
+import { MainDashboard } from "@/components/student/mainDashboard";
 import Image from "next/image";
 
 export default function StudentDashboard() {
@@ -13,16 +15,9 @@ export default function StudentDashboard() {
             <h1 className="welcome-text">{username} 🪴</h1>
           </div>
           <div className="flex gap-10">
-            <div className="bg-[#303030] w-[487px] h-[492px] rounded-[16px]">
-              <div className="header flex justify-between p-5">
-                <h2 className="text-dashboard text-[16px] font-semibold">
-                  Pending Applications
-                </h2>
-                <p className="text-highlight text-[12px] font-bold">See All</p>
-              </div>
-            </div>
+            <MainDashboard />
             <div className="flex justify-between flex-col">
-              <div className="number-of-applications w-[277px] h-[223px] bg-[#303030] rounded-[16px]"></div>
+              <ApplicationCount />
               <div className="flex items-center justify-end w-full text-right">
                 <div className="p-4 text-white text-[16px] font-medium flex flex-col items-end">
                   <p className="py-4">
