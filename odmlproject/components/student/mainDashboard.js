@@ -11,10 +11,10 @@ export const MainDashboard = () => {
         <p className="text-highlight text-[12px] font-bold">See All</p>
       </div>
       <div className="application-container flex flex-col items-center space-y-4">
-        <DashboardCard />
-        <DashboardCard />
-        <DashboardCard />
-        <DashboardCard />
+        <DashboardCard title={"Headline Label"} status={"Status"} />
+        <DashboardCard title={"Headline Label"} status={"Status"} />
+        <DashboardCard title={"Headline Label"} status={"Status"} />
+        <DashboardCard title={"Headline Label"} status={"Status"} />
       </div>
     </div>
   );
