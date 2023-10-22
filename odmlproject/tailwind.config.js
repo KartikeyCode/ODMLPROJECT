@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         Lato: ["Lato", "sans-serif"],
         Chivo: ["Chivo Mono", "monospace"],
+        Poppins:["Poppins","sans-serif"],
        }
     },
   },
