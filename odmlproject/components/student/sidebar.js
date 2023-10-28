@@ -1,6 +1,6 @@
 import Image from "next/image";
-import sideimg from "../public/sidebar.png";
-import applications from "../public/applications.png";
+import sideimg from "../../public/sidebar.png";
+import applications from "../../public/applications.png";
 
 export default function Sidebar() {
   return (

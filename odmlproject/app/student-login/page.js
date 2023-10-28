@@ -1,9 +1,9 @@
 import Image from "next/image";
 import googlesignin from "../../public/signgoogle.png";
 import Link from "next/link";
-import teacherlogin from "../../public/teacherlogin.png";
+import studentLogin from "../../public/studentLogin.svg";
 
-export default function NewTeacherLogin() {
+export default function StudentLogin() {
   return (
     <div className="min-h-screen bg-[#1B1919] flex-col flex lg:flex-row ">
       <div className="formleft flex flex-col py-5 px-12 lg:py-20 lg:px-28">
@@ -125,7 +125,7 @@ export default function NewTeacherLogin() {
       </div>
 
       <div className="img">
-        <Image src={teacherlogin} className="mt-16  lg:ml-56 lg:w-[50rem]" />
+        <Image src={studentLogin} className="mt-16  lg:ml-56 lg:w-[50rem]" />
       </div>
     </div>
   );
