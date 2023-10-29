@@ -6,7 +6,7 @@ import ApplicationForm from '@/components/applicationform'
 export default function Home() {
   return (
     <main className="flex flex-col w-full min-h-screen ">
-      <Navbar/>
+      {/* <Navbar/> */}
       {/* <Hero/> */}
       <ApplicationForm />
     </main>

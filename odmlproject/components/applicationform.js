@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Form } from './ui/form'
@@ -9,7 +9,9 @@ import  { Label } from './ui/label'
 import { Textarea } from './ui/textarea'
 import { RadioGroup, RadioGroupItem } from './ui/radio-group'
 import { Button } from './ui/button'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { set } from 'date-fns'
 
 export default function ApplicationForm() {
   
@@ -22,20 +24,41 @@ export default function ApplicationForm() {
     const [durationFrom, setDurationFrom] = useState('')
     const [durationTo, setDurationTo] = useState('')
     const [typeOfLeave, setTypeOfLeave] = useState('')
-    const [proof, setProof] = useState('')
-
+    const [isProofUploaded, setIsProofUploaded] = useState(false)
+    const [proof, setProof] = useState(null)
+    const proofInputRef = useRef(null)
     const pathname = usePathname()
+
+    const handleProofClick = () => {
+      proofInputRef.current?.click()
+    }
+
+    const handleProofChange = (e) => {
+      const file = e.target.files[0]
+      if (file) {
+        setProof(file)
+        setIsProofUploaded(true)
+      } else {
+        setProof(null)
+        setIsProofUploaded(false)
+      }
+    }
+
     const handleSubmit = (e) => {
-      e.preventDefault()
-      console.log({
-        name, registrationNumber, department, programme, semester,
-        reason, durationFrom, durationTo, typeOfLeave, proof,
-      })
-      window.location.reload()
+      e.preventDefault();
+      if (name && registrationNumber && department && programme && semester &&
+        reason && durationFrom && durationTo && typeOfLeave && isProofUploaded) {
+        console.log({
+          name, registrationNumber, department, programme, semester,
+          reason, durationFrom, durationTo, typeOfLeave, isProofUploaded, proof
+        });
+        toast("Submitted")
+      } else {toast('Please fill all fields');
+      }
     };
   
     return (
-        <main className="h-screen w-[86.5rem] min-h-screen py-2 md:py-0 px-4 md:sticky
+        <main className="w-full min-h-screen py-2 md:py-0 px-4 md:sticky
         flex-col justify-start items-start inline-flex relative bg-stone-900">
         <div className="absolute left-[-28px] top-[-2px]">
           <div className="w-[19rem] h-screen bg-neutral-700 bg-opacity-20 rounded-[30px]" />
@@ -57,7 +80,7 @@ export default function ApplicationForm() {
           <div className="w-[90px] h-[38px] left-[38px] top-0 text-white text-[10px] font-semibold font-['Poppins']">BLOCKCHAIN CLUB SRM</div>
         </div>
         <div className="absolute left-[221px] top-[157px] bg-stone-300 rounded-full blur-[400px] h-[219px] w-[223px]" />
-        <Form>
+        <Form onSubmit={handleSubmit}>
         <div className="absolute left-[383px] top-[58px] flex-col justify-start items-start gap-6 inline-flex">
           <div className="self-stretch flex-col justify-start items-start gap-1">
             <Label className="text-gray-200 text-lg font-semibold font-['SF Pro Display'] leading-none">Name</Label>
@@ -127,8 +150,14 @@ export default function ApplicationForm() {
         </div>
         <Button className="absolute left-[582px] top-[688px] w-[324px] h-[52px] py-4 bg-blue-700 rounded-xl justify-center items-center inline-flex text-center text-white text-xl font-normal font-['Roboto'] leading-tight tracking-tight" 
         onClick={handleSubmit}>Submit</Button>
-        <Button variant="link" className="absolute left-[910px] top-[304px] w-[196px] h-12 py-4 bg-stone-500 rounded-[5px] justify-center items-center inline-flex text-center text-gray-200 text-lg font-normal font-['SF Pro Display'] leading-none" 
-        value={proof} onClick={() => setProof(proof)}>Upload Proof</Button>
+        <ToastContainer position="top-center" autoClose={2500} hideProgressBar={false} newestOnTop={false} closeOnClick
+        rtl={false} pauseOnFocusLoss pauseOnHover theme="dark"/>
+        <div id="uploadProof">
+          <input className='hidden' type='file' ref={proofInputRef} onChange={handleProofChange}/>
+        <Button className="absolute left-[910px] top-[304px] w-[196px] h-12 py-4 bg-stone-500 rounded-[5px] justify-center items-center inline-flex text-center text-gray-200 text-lg font-normal font-['SF Pro Display']" 
+        value={proof} onClick={handleProofClick}>
+          Upload Proof</Button>
+        </div>
         </Form>
       </main>
     );
