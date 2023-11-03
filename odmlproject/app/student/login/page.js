@@ -1,7 +1,7 @@
 import Image from "next/image";
-import googlesignin from "../../public/signgoogle.png";
+import googlesignin from "../../../public/signgoogle.png";
 import Link from "next/link";
-import studentLogin from "../../public/studentLogin.svg";
+import studentLogin from "../../../public/studentLogin.svg";
 
 export default function StudentLogin() {
   return (

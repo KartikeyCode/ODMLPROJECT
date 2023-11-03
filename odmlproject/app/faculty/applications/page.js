@@ -9,6 +9,9 @@ const page = () => {
       <Sidebar />
       <div className="flex w-full justify-center items-center">
         <div className="flex flex-col">
+          <h1 className="text-[50px] text-white font-semibold">
+            CSE-AIML AA 1
+          </h1>
           <ApplicationCard type={"Medical Leave"} days={8} />
         </div>
       </div>

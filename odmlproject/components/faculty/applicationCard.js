@@ -33,16 +33,25 @@ export const ApplicationCard = ({ type, registerationNumber, days, uuid }) => {
   const callRejectEndpoint = async (uuid) => {};
   return (
     <div className="bg-[#303030] w-[782px] h-[143px] rounded-[16px] justify-center items-center flex">
-      <div className="content flex flex-col space-y-4 justify-start md:w-[80%]">
-        <div className="header flex justify-between items-center w-[60%]">
-          <h1 className="font-semibold text-white text-[32px]">{type}</h1>
-          <p className="text-[24px] text-[#B6B6B6]">({days} days)</p>
-          <img src={"/info.svg"} alt="info" />
-
-          {/* <h1>{typeName}</h1> */}
+      <div className="flex w-full justify-around items-center">
+        <div className="content w-[55%] flex flex-col space-y-3 justify-start">
+          <div className="header flex justify-start space-x-3 items-center">
+            <h1 className="font-semibold text-white text-[32px]">{type}</h1>
+            <p className="text-[24px] text-[#B6B6B6]">({days} days)</p>
+            <img src={"/info.svg"} alt="info" />
+            {/* <h1>{typeName}</h1> */}
+          </div>
+          <div className="registeration-number text-[24px] font-bold text-white">
+            RAXXXXXXXXXXXXX
+          </div>
         </div>
-        <div className="registeration-number font-bold text-white">
-          RAXXXXXXXXXXXXX
+        <div className="buttons flex justify-between space-x-4">
+          <div className="text-white bg-[#E13636] justify-center items-center flex px-4 py-1 rounded-md">
+            Reject
+          </div>
+          <div className="text-white bg-[#0FA958] justify-center items-center flex px-4 py-1 rounded-md">
+            Approve
+          </div>
         </div>
       </div>
     </div>
