@@ -33,7 +33,7 @@ export const ApplicationCard = ({ type, registerationNumber, days, uuid }) => {
 
   const callRejectEndpoint = async (uuid) => {};
   return (
-    <div className="bg-[#303030] w-[782px] h-[143px] rounded-[16px] justify-center items-center flex">
+    <div className="bg-[#303030] w-[782px] h-[143px] rounded-[16px] my-3 justify-center items-center flex">
       <div className="flex w-full justify-around items-center">
         <div className="content w-[55%] flex flex-col space-y-3 justify-start">
           <div className="header flex justify-start space-x-3 items-center">
@@ -43,7 +43,6 @@ export const ApplicationCard = ({ type, registerationNumber, days, uuid }) => {
               <DialogTrigger>
                 <img src={"/info.svg"} alt="info" />
               </DialogTrigger>
-              <DialogContent></DialogContent>
             </Dialog>
             {/* <h1>{typeName}</h1> */}
           </div>

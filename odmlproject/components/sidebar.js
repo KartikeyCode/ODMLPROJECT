@@ -1,6 +1,7 @@
 import Image from "next/image";
 import sideimg from "../public/sidebar.png";
 import applications from "../public/applications.png";
+import Link from "next/link";
 
 export default function Sidebar() {
   return (
@@ -116,13 +117,13 @@ export default function Sidebar() {
           <div className=" flex items-center justify-center z-0  circle w-10 h-10 rounded-full border-2  border-[#282830] ">
             <Image src={applications} />
           </div>
-          <a
-            href="/"
+          <Link
+            href="/faculty/applications"
             className="cursor-pointer text-white text-lg mt-px font-bold "
           >
             {" "}
             Applications{" "}
-          </a>
+          </Link>
         </div>
 
         <div className="Profile z-10 mt-10 ml-9 items-center gap-6  flex">
