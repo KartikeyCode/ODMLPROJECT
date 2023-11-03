@@ -1,17 +1,16 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
 import { Form } from './ui/form'
 import { Input } from './ui/input'
-import  { Label } from './ui/label'
+import { Label } from './ui/label'
 import { Textarea } from './ui/textarea'
 import { RadioGroup, RadioGroupItem } from './ui/radio-group'
 import { Button } from './ui/button'
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectLabel, SelectGroup, SelectItem } from './ui/select'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { set } from 'date-fns'
+import Sidebar from './sidebar'
 
 export default function ApplicationForm() {
   
@@ -27,59 +26,50 @@ export default function ApplicationForm() {
     const [isProofUploaded, setIsProofUploaded] = useState(false)
     const [proof, setProof] = useState(null)
     const proofInputRef = useRef(null)
-    const pathname = usePathname()
 
     const handleProofClick = () => {
       proofInputRef.current?.click()
     }
 
-    const handleProofChange = (e) => {
+    const handleProofUpload = (e) => {
       const file = e.target.files[0]
       if (file) {
-        setProof(file)
-        setIsProofUploaded(true)
+        const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'application/pdf']
+        if (allowedTypes.includes(file.type)) {
+          setProof(file)
+          setIsProofUploaded(true)
+          toast("Proof Uploaded Successfully.")
+        } else {
+          toast("Only JPG, PNG and PDF files are allowed.")
+        }
       } else {
         setProof(null)
         setIsProofUploaded(false)
+        toast("Please Upload Proof.")
       }
+    }
+
+    const handleSelect = (value) => {
+      setDepartment(value)
     }
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (name && registrationNumber && department && programme && semester &&
+      if (name && registrationNumber && programme && semester && 
         reason && durationFrom && durationTo && typeOfLeave && isProofUploaded) {
         console.log({
           name, registrationNumber, department, programme, semester,
           reason, durationFrom, durationTo, typeOfLeave, isProofUploaded, proof
         });
         toast("Submitted")
-      } else {toast('Please fill all fields');
+        } else {
+          toast('Please fill all fields.')
       }
     };
   
     return (
-        <main className="w-full min-h-screen py-2 md:py-0 px-4 md:sticky
-        flex-col justify-start items-start inline-flex relative bg-stone-900">
-        <div className="absolute left-[-28px] top-[-2px]">
-          <div className="w-[19rem] h-screen bg-neutral-700 bg-opacity-20 rounded-[30px]" />
-        </div>
-        <div className="absolute left-[2.313rem] top-[9.813rem] flex-col justify-start items-start gap-8 inline-flex">
-          <div className="relative w-[6.563rem] h-10">
-            <div className="w-[6.563rem] h-10 justify-start items-center gap-4 inline-flex">
-              <div className="text-white text-lg font-bold font-['SF Pro Display']">
-              <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">Home</Link>
-            </div>
-            </div>
-          </div>
-          <div className="relative w-[109px] h-10 justify-start items-center gap-4 inline-flex">
-              <div className="text-white text-lg font-bold font-['SF Pro Display']">
-              <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/user/profile">Profile</Link></div>
-          </div>
-        </div>
-        <div className="absolute left-[46px] top-[38px]">
-          <div className="w-[90px] h-[38px] left-[38px] top-0 text-white text-[10px] font-semibold font-['Poppins']">BLOCKCHAIN CLUB SRM</div>
-        </div>
-        <div className="absolute left-[221px] top-[157px] bg-stone-300 rounded-full blur-[400px] h-[219px] w-[223px]" />
+        <main className="min-w-screen min-h-screen flex-col justify-start items-start overflow-auto inline-flex relative bg-stone-900">
+        <Sidebar className="flex justify-start"/>
         <Form onSubmit={handleSubmit}>
         <div className="absolute left-[383px] top-[58px] flex-col justify-start items-start gap-6 inline-flex">
           <div className="self-stretch flex-col justify-start items-start gap-1">
@@ -91,16 +81,26 @@ export default function ApplicationForm() {
         <div className="absolute left-[386px] top-[484px] flex-col justify-start items-start gap-6 inline-flex">
           <div className="w-[716px] flex-col justify-start items-start gap-1">
             <Label className="text-gray-200 text-lg font-semibold font-['SF Pro Display'] leading-none">Reason</Label>
-            <Textarea className="self-stretch text-gray-200 w-[716px] h-[130px] p-3 my-2 bg-zinc-700 rounded-[5px] border border-zinc-700"
+            <Textarea className="self-stretch text-gray-200 w-[716px] h-[130px] p-3 my-2 max-h-36 bg-zinc-700 rounded-[5px] border border-zinc-700"
               type="text" placeholder="Reason for leave" value={reason} onChange={(e) => setReason(e.target.value)} />
           </div>
         </div>
-        <div className="absolute left-[763px] top-[162px] flex-col justify-start items-start gap-6 inline-flex">
-          <div className="self-stretch flex-col justify-start items-start gap-1">
+        <div id="select" className="absolute left-[763px] top-[162px] flex-col justify-start items-start gap-3 inline-flex">
             <Label className="text-gray-200 text-lg font-semibold font-['SF Pro Display'] leading-none">Department</Label>
-            <Input className="self-stretch p-3 my-2 text-gray-200 bg-zinc-700 rounded justify-start items-center gap-2.5"
-              type="text" placeholder="CINTEL" value={department} onChange={(e) => setDepartment(e.target.value)} />
-          </div>
+            <Select className="w-full h-full flex justify-between items-center" onValueChange={handleSelect}>
+              <SelectTrigger className="self-stretch p-3 my-2 bg-zinc-700 text-gray-200 rounded justify-start items-center gap-2.5" >
+                <SelectValue placeholder="CINTEL"/>
+              </SelectTrigger >
+              <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Select Department:</SelectLabel>
+                <SelectItem value="CINTEL">CINTEL</SelectItem>
+                <SelectItem value="NWC">NWC</SelectItem>
+                <SelectItem value="DSBS">DSBS</SelectItem>
+                <SelectItem value="CTECH">CTECH</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+            </Select>
         </div>
         <Label className="absolute left-[385px] top-[372px] text-gray-200 text-lg font-semibold font-['SF Pro Display'] leading-none">Duration</Label>
         <Label className="absolute left-[616px] top-[414px] text-gray-200 text-lg font-semibold font-['SF Pro Display'] leading-none">to</Label>
@@ -115,7 +115,8 @@ export default function ApplicationForm() {
           <Label className="text-gray-200 text-lg font-semibold font-['SF Pro Display'] leading-none">Semester</Label>
         </div>
         <div className="absolute left-[608px] top-[198px]">
-          <Input className="self-stretch bg-zinc-700 h-[48px] w-[72px] text-gray-200 rounded border border-gray-700"
+          <Input className="self-stretch bg-zinc-700 h-[48px] w-[72px] text-gray-200 rounded border border-gray-700
+          [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             type="number" value={semester} placeholder="6" min={1} max={10} onChange={(e) => setSemester(e.target.value)} />
         </div>
         <RadioGroup className="absolute left-[383px] top-[162px]" onValueChange={(value) => setProgramme(value)}>
@@ -153,10 +154,9 @@ export default function ApplicationForm() {
         <ToastContainer position="top-center" autoClose={2500} hideProgressBar={false} newestOnTop={false} closeOnClick
         rtl={false} pauseOnFocusLoss pauseOnHover theme="dark"/>
         <div id="uploadProof">
-          <input className='hidden' type='file' ref={proofInputRef} onChange={handleProofChange}/>
+          <input className='hidden' type='file' ref={proofInputRef} onChange={handleProofUpload}/>
         <Button className="absolute left-[910px] top-[304px] w-[196px] h-12 py-4 bg-stone-500 rounded-[5px] justify-center items-center inline-flex text-center text-gray-200 text-lg font-normal font-['SF Pro Display']" 
-        value={proof} onClick={handleProofClick}>
-          Upload Proof</Button>
+        value={proof} onClick={handleProofClick}> Upload Proof </Button>
         </div>
         </Form>
       </main>
