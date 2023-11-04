@@ -18,7 +18,7 @@ export const ApplicationCount = () => {
         <div className="bg-[#E4ECF7] font-semibold rounded-[5px] w-[90px] flex justify-center items-center text-center h-[30px] text-[#505780]">
           Pending {pendingApplications}
         </div>
-        <div className="bg-highlight font-semibold flex justify-center items-center rounded-[5px] w-[100px] h-[30px] p-1 text-center">
+        <div className="bg-[#4C6FFF] font-semibold flex justify-center items-center rounded-[5px] w-[100px] h-[30px] p-1 text-center">
           Approved {approvedApplications}
         </div>
       </div>

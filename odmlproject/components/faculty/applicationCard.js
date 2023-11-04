@@ -1,6 +1,7 @@
 "use client";
 import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 export const ApplicationCard = ({ type, registerationNumber, days, uuid }) => {
@@ -39,11 +40,10 @@ export const ApplicationCard = ({ type, registerationNumber, days, uuid }) => {
           <div className="header flex justify-start space-x-3 items-center">
             <h1 className="font-semibold text-white text-[32px]">{type}</h1>
             <p className="text-[24px] text-[#B6B6B6]">({days} days)</p>
-            <Dialog>
-              <DialogTrigger>
-                <img src={"/info.svg"} alt="info" />
-              </DialogTrigger>
-            </Dialog>
+            <Link href={`/faculty/applications/${uuid}`}>
+              <img src={"/info.svg"} alt="info" />
+            </Link>
+
             {/* <h1>{typeName}</h1> */}
           </div>
           <div className="registeration-number text-[24px] font-bold text-white">

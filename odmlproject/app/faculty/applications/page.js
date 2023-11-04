@@ -2,7 +2,7 @@ import { ApplicationCard } from "@/components/faculty/applicationCard";
 import Sidebar from "@/components/sidebar";
 import React from "react";
 
-const page = () => {
+const page = ({ params: { uuid } }) => {
   // todo: make the sidebar a layout
   // ! issue: cards being compressed
   return (
