@@ -1,9 +1,10 @@
 import Image from "next/image";
-import sideimg from "../public/sidebar.png";
-import applications from "../public/applications.png";
+import sideimg from "../../public/sidebar.png";
+import applications from "../../public/applications.png";
 import Link from "next/link";
 
 export default function Sidebar() {
+  // todo: shift the circle depending on the path or contect var
   return (
     <div className="min-h-screen w-80 bg-[#222020] flex-col rounded-r-3xl shadow-xl  ">
       <div className="flex logo gap-2 items-center mt-11 ml-10">
@@ -104,13 +105,13 @@ export default function Sidebar() {
               </defs>
             </svg>
           </div>
-          <a
-            href="/"
+          <Link
+            href="/student/dashboard"
             className="cursor-pointer text-white text-lg mt-px font-bold "
           >
             {" "}
             Home{" "}
-          </a>
+          </Link>
         </div>
 
         <div className="Applications z-10 mt-10 ml-9 items-center gap-6  flex">
@@ -118,7 +119,7 @@ export default function Sidebar() {
             <Image src={applications} />
           </div>
           <Link
-            href="/faculty/applications"
+            href="/student/applications"
             className="cursor-pointer text-white text-lg mt-px font-bold "
           >
             {" "}
@@ -151,13 +152,13 @@ export default function Sidebar() {
               />
             </svg>
           </div>
-          <a
+          <Link
             href="/"
             className="cursor-pointer text-white text-lg mt-px font-bold "
           >
             {" "}
             Profile{" "}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
