@@ -1,11 +1,9 @@
-import Sidebar from "@/components/sidebar"
+import Sidebar from "@/components/sidebar";
 
-export default function NewTeacherDash(){
-    return(
-        <div className=" flex bg-[#1B1919] ">
-
-        <Sidebar />
-
-        </div>
-    )
+export default function NewTeacherDash() {
+  return (
+    <div className=" flex bg-[#1B1919] ">
+      <Sidebar />
+    </div>
+  );
 }

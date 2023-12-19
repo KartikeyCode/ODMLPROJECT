@@ -1,11 +1,11 @@
-export default function Cards({data}){
-
-    
-
-    return(
-        <div className="md:p-4 md:flex-wrap max-w-[37rem] md:overflow-y-auto overflow-y-scroll  justify-start  max-h-screen flex flex-col  ">
-              {data.map((item) => (
-        <article key={item.RegistrationNumber} className=" w-52 md:w-72 rounded-xl border-2 border-gray-100 bg-white">
+export default function Cards({ data }) {
+  return (
+    <div className="md:p-4 md:flex-wrap max-w-[37rem] md:overflow-y-auto overflow-y-scroll  justify-start  max-h-screen flex flex-col  ">
+      {data.map((item) => (
+        <article
+          key={item.RegistrationNumber}
+          className=" w-52 md:w-72 rounded-xl border-2 border-gray-100 bg-white"
+        >
           <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
             <a href="#" className="block shrink-0">
               <img
@@ -28,10 +28,14 @@ export default function Cards({data}){
 
               <div className="mt-2 sm:flex sm:items-center sm:gap-2">
                 <div className="flex items-center gap-1 text-gray-500">
-                  <p className="text-xs md:text-base font-semibold">{item.ODML}</p>
+                  <p className="text-xs md:text-base font-semibold">
+                    {item.ODML}
+                  </p>
                 </div>
 
-                <span className="hidden sm:block" aria-hidden="true">&middot;</span>
+                <span className="hidden sm:block" aria-hidden="true">
+                  &middot;
+                </span>
 
                 <p className="text-xs md:text-base  sm:text-gray-500">
                   Year: {item.year}
@@ -41,7 +45,6 @@ export default function Cards({data}){
           </div>
         </article>
       ))}
-
-        </div>
-    )
+    </div>
+  );
 }
