@@ -1,14 +1,14 @@
 import { ApplicationCard } from "@/components/faculty/applicationCard";
-import Sidebar from "@/components/sidebar";
+import Sidebar from "@/components/facultysidebar";
 import React from "react";
 
 const page = ({ params: { uuid } }) => {
   // todo: make the sidebar a layout
   // ! issue: cards being compressed
   return (
-    <div className=" flex bg-[#1B1919] ">
+    <div className=" flex bg-[#1B1919] min-h-screen">
       <Sidebar />
-      <div className="flex w-full justify-center items-center">
+      <div className="flex w-screen justify-center items-center">
         <div className="flex flex-col">
           <h1 className="text-[50px] text-white font-semibold">
             CSE-AIML AA 1
