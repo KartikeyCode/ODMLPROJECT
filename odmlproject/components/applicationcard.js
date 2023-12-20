@@ -8,7 +8,7 @@ export default function ApplicationCard(props){
 
 
     return(
-        <div className="bg-[#303030] flex-col flex rounded-xl w-[50rem] h-32 px-6 py-5 ">
+        <div className="bg-[#303030] flex-col flex rounded-xl  w-[23rem] xl:w-[50rem] h-44 sm:h-32 px-6 py-5 ">
 
         <div className="flex justify-between">
         <h1 className="text-[#D6D6D9] text-base font-semibold"> {heading} </h1>
@@ -17,7 +17,7 @@ export default function ApplicationCard(props){
 
         <h1 className="text-[#A0A0A0] text-sm  "> Status </h1>
 
-        <div className="flex mt-4 gap-10">
+        <div className="flex mt-4 gap-3 sm:gap-10">
 
         <div className="FA flex items-center gap-6">
 

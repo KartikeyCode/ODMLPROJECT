@@ -3,7 +3,7 @@ import sideimg from "../public/sidebar.png";
 import applications from "../public/applications.png";
 import Link from "next/link";
 
-export default function Sidebar() {
+export default function FacSidebar() {
   return (
     <div className="min-h-screen w-80 bg-[#222020] sm:flex flex-col rounded-r-3xl shadow-xl hidden ">
       <div className="flex logo gap-2 items-center mt-11 ml-10">
@@ -72,9 +72,7 @@ export default function Sidebar() {
         </h1>
       </div>
 
-      <div className="links relative  flex flex-col justify-between ">
-        
-
+      <div className="links relative  flex flex-col ">
         <Image className=" z-0 backblur -mt-8 absolute " src={sideimg} />
 
         <div className="home z-10 mt-20 ml-9 items-center gap-6  flex">
@@ -85,19 +83,19 @@ export default function Sidebar() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              >
+            >
               <g clip-path="url(#clip0_267_1902)">
                 <path
                   opacity="0.3"
                   d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
                   fill="white"
-                  />
+                />
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M11.7358 20.9962C6.8874 20.8564 3 16.8822 3 12C3 11.9168 3.00113 11.8339 3.00337 11.7513C3.66233 11.8143 4.85637 11.9574 4.91263 12.4204C4.99049 13.0609 4.91263 13.8616 5.45805 14.1018C6.00346 14.342 6.15932 13.1409 6.62675 13.4613C7.09418 13.7816 8.34087 14.0899 8.34087 14.6562C8.34087 15.2224 8.10715 16.1035 8.34087 16.2636C8.57458 16.4238 9.50897 17.5446 9.50921 17.7048C9.50957 17.865 9.83857 18.6794 9.7404 18.9907C9.65905 19.2487 9.24858 20.0502 8.8506 20.4146C9.75315 20.7621 10.7236 20.9658 11.7358 20.9961V20.9962ZM8.28273 3.80112C9.41584 3.28656 10.6745 3 12 3C15.5115 3 18.5532 5.01097 20.0364 7.94408C20.0697 8.72412 20.0638 9.39135 20.2361 9.63274C21.1132 10.8601 18.0995 11.7043 18.5573 13.5605C18.759 14.3795 16.5528 14.1197 16.014 14.8864C15.4748 15.6527 14.1575 15.1378 13.852 14.9905C13.5466 14.8432 12.3766 15.3341 12.4789 14.4995C12.5806 13.6646 13.2923 13.6156 14.0556 13.272C14.8185 12.9287 15.9189 11.7872 15.3782 11.638C12.8323 10.9362 11.9638 8.47852 11.9638 8.47852C11.811 8.44901 11.8494 6.74109 11.1884 6.69207C10.5267 6.6428 10.1705 6.88841 9.20436 6.69207C8.23765 6.49573 8.44144 5.85744 8.28872 4.48256C8.25454 4.17416 8.25619 3.95717 8.28273 3.80112ZM20.9992 11.877C20.9997 11.918 21 11.9589 21 12C21 16.9407 17.0188 20.9515 12.0895 20.9996C16.9702 20.9503 20.9337 16.8884 20.9992 11.877Z"
                   fill="white"
-                  />
+                />
               </g>
               <defs>
                 <clipPath id="clip0_267_1902">
@@ -107,9 +105,9 @@ export default function Sidebar() {
             </svg>
           </div>
           <a
-            href="/student/dashboard"
+            href="/faculty/dashboard"
             className="cursor-pointer text-white text-lg mt-px font-bold "
-            >
+          >
             {" "}
             Home{" "}
           </a>
@@ -122,7 +120,7 @@ export default function Sidebar() {
           <Link
             href="/faculty/applications"
             className="cursor-pointer text-white text-lg mt-px font-bold "
-            >
+          >
             {" "}
             Applications{" "}
           </Link>
@@ -136,49 +134,31 @@ export default function Sidebar() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              >
+            >
               <path
                 d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
                 stroke="#E0E0E8"
                 stroke-width="1.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                />
+              />
               <path
                 d="M20.5901 22C20.5901 18.13 16.7402 15 12.0002 15C7.26015 15 3.41016 18.13 3.41016 22"
                 stroke="#E0E0E8"
                 stroke-width="1.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                />
+              />
             </svg>
           </div>
           <a
             href="/"
             className="cursor-pointer text-white text-lg mt-px font-bold "
-            >
+          >
             {" "}
             Profile{" "}
           </a>
         </div>
-
-            
-
-        <div className="hover:scale-105 transition-all cursor-pointer create w-52 bg-[#525252] h-14 flex gap-3 rounded-xl xl:mt-[32rem] ml-9 shadow-2xl py-4 px-4 items-center">
-
-          <div className="plus w-10 h-10 bg-[#494848] rounded-full flex items-center justify-center">
-
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <rect x="6" y="11" width="12" height="2" rx="1" fill="white"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M13 6.75V17.25C13 17.6642 12.5523 18 12 18C11.4477 18 11 17.6642 11 17.25V6.75C11 6.33579 11.4477 6 12 6C12.5523 6 13 6.33579 13 6.75Z" fill="white"/>
-</svg>
-
-          </div>
-
-          <h1 className="font-bold text-white text-sm"> New Application </h1>
-
-        </div>
-
       </div>
     </div>
   );

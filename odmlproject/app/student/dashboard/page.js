@@ -1,4 +1,4 @@
-import Sidebar from "@/components/student/sidebar";
+import Sidebar from "@/components/sidebar";
 import { ApplicationCount } from "@/components/student/applicationCount";
 import { MainDashboard } from "@/components/student/mainDashboard";
 import Image from "next/image";

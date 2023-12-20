@@ -1,5 +1,5 @@
 import { ApplicationCard } from "@/components/faculty/applicationCard";
-import Sidebar from "@/components/sidebar";
+import Sidebar from "@/components/facultysidebar";
 import React from "react";
 
 const page = ({ params: { uuid } }) => {
