@@ -30,33 +30,53 @@ export const ApplicationCard = ({ type, registerationNumber, days, uuid }) => {
     }
   }; */
 
-  const callApproveEndpoint = async (uuid) => {};
+  const callApproveEndpoint = async (uuid) => {
+    // Call your approve endpoint logic here
+    console.log("approved");
+  };
 
-  const callRejectEndpoint = async (uuid) => {};
+  const callRejectEndpoint = async (uuid) => {
+    // Call your reject endpoint logic here
+    console.log("rejected");
+  };
   return (
-    <div className="bg-[#303030] w-[782px] h-[143px] rounded-[16px] my-3 justify-center items-center flex">
+    <div className="bg-[#303030] sm:px-0 px-20 w-8 h-[30rem] lg:w-[45rem] xl:w-[49rem] xl:h-36 rounded-2xl my-3 justify-center items-center flex">
       <div className="flex w-full justify-around items-center">
         <div className="content w-[55%] flex flex-col space-y-3 justify-start">
           <div className="header flex justify-start space-x-3 items-center">
-            <h1 className="font-semibold text-white text-[32px]">{type}</h1>
-            <p className="text-[24px] text-[#B6B6B6]">({days} days)</p>
+            <h1 className="font-semibold text-white text-xl xl:text-3xl">
+              {type}
+            </h1>
+            <p className="  text-xs xl:text-2xl text-[#B6B6B6]">
+              ({days} days)
+            </p>
             <Link href={`/faculty/applications/${uuid}`}>
               <img src={"/info.svg"} alt="info" />
             </Link>
 
             {/* <h1>{typeName}</h1> */}
           </div>
-          <div className="registeration-number text-[24px] font-bold text-white">
+          <div className="registeration-number text-lg xl:text-2xl font-bold text-white">
             RAXXXXXXXXXXXXX
           </div>
         </div>
         <div className="buttons flex justify-between space-x-4">
-          <div className="text-white bg-[#E13636] justify-center items-center flex px-4 py-1 rounded-md">
+          <button
+            onClick={() => {
+              callRejectEndpoint(uuid);
+            }}
+            className="text-white bg-[#E13636] justify-center items-center flex px-4 py-1 rounded-md hover:scale-110 transition-all"
+          >
             Reject
-          </div>
-          <div className="text-white bg-[#0FA958] justify-center items-center flex px-4 py-1 rounded-md">
+          </button>
+          <button
+            onClick={() => {
+              callApproveEndpoint(uuid);
+            }}
+            className="text-white bg-[#0FA958] justify-center items-center flex px-4 py-1 rounded-md hover:scale-110 transition-all"
+          >
             Approve
-          </div>
+          </button>
         </div>
       </div>
     </div>
